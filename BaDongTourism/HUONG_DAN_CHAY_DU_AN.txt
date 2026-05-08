@@ -7,7 +7,7 @@ YÊU CẦU PHẦN MỀM
 -----------------
 Cài đặt các phần mềm sau trước khi bắt đầu:
 
-  1. Visual Studio Community 2022 (miễn phí)
+  1. Visual Studio Community 2026 (miễn phí)
      Link: https://visualstudio.microsoft.com/vs/community/
      Khi cài chọn workload: "ASP.NET and web development"
      ⚠ Lưu ý: Dự án dùng .NET Framework 4.8, KHÔNG dùng .NET Core
@@ -94,7 +94,7 @@ BƯỚC 3 — CẤU HÌNH KẾT NỐI DATABASE
 BƯỚC 4 — MỞ VÀ CHẠY DỰ ÁN TRONG VISUAL STUDIO
 ================================================================
 
-  1. Mở Visual Studio Community 2022
+  1. Mở Visual Studio Community 2026
 
   2. Bấm "Open a project or solution"
      Chọn file: BaDongTourism\BaDongTourism.sln
