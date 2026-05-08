@@ -89,7 +89,7 @@
                             <div class="row g-2 mb-3">
                                 <div class="col-6">
                                     <label class="form-label fw-600">Người lớn</label>
-                                    <asp:TextBox ID="SoNguoiLon" runat="server" CssClass="form-control" TextMode="Number" Text="1" min="1" />
+                                    <asp:TextBox ID="SoNguoiLon" runat="server" CssClass="form-control" TextMode="Number" Text="0" min="0" />
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label fw-600">Trẻ em</label>
@@ -120,4 +120,32 @@
     </div>
 </section>
 
+</asp:Content>
+
+<asp:Content ID="ScriptContent" ContentPlaceHolderID="ScriptContent" runat="server">
+<script>
+(function () {
+    var inpNL  = document.getElementById('<%=SoNguoiLon.ClientID%>');
+    var inpTE  = document.getElementById('<%=SoTreEm.ClientID%>');
+    var disp   = document.getElementById('TongTienDisplay');
+    var hidden = document.getElementById('<%=TongTien.ClientID%>');
+
+    function fmtTien(n) {
+        return n.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function calcTotal() {
+        var gnl   = parseFloat(disp.dataset.gianguoilon || 0);
+        var gte   = parseFloat(disp.dataset.giatreem    || 0);
+        var nl    = parseInt(inpNL.value)  || 0;
+        var te    = parseInt(inpTE.value)  || 0;
+        var total = nl * gnl + te * gte;
+        disp.innerText   = fmtTien(total);
+        if (hidden) hidden.value = total;
+    }
+
+    if (inpNL) inpNL.addEventListener('input', calcTotal);
+    if (inpTE) inpTE.addEventListener('input', calcTotal);
+})();
+</script>
 </asp:Content>
