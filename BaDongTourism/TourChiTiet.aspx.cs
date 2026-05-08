@@ -62,12 +62,20 @@ public partial class TourChiTiet : Page
         if (_tour == null) return;
 
         int soNL, soTE;
-        soNL = int.TryParse(SoNguoiLon.Text, out soNL) ? soNL : 1;
+        soNL = int.TryParse(SoNguoiLon.Text, out soNL) ? soNL : 0;
         soTE = int.TryParse(SoTreEm.Text,    out soTE) ? soTE : 0;
+
+        if (soNL <= 0 && soTE <= 0)
+        {
+            lblMsg.Text = "<span class='text-danger'><i class='fas fa-exclamation-circle me-1'></i>Vui lòng chọn ít nhất 1 người lớn hoặc 1 trẻ em.</span>";
+            return;
+        }
+
         decimal tong = soNL * _tour.GiaNguoiLon + soTE * _tour.GiaTreEm;
 
         DateTime ngayKH;
-        DateTime.TryParse(txtNgayKH.Text, out ngayKH);
+        if (!DateTime.TryParse(txtNgayKH.Text, out ngayKH) || ngayKH < DateTime.Today)
+            ngayKH = DateTime.MinValue; // se xu ly o DAL thanh NULL
 
         var dat = new DatTour
         {

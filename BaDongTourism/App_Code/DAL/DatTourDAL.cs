@@ -63,7 +63,7 @@ namespace BaDongTourism.DAL
                 new SqlParameter("@DienThoai",    d.DienThoai),
                 new SqlParameter("@SoNguoiLon",   d.SoNguoiLon),
                 new SqlParameter("@SoTreEm",      d.SoTreEm),
-                new SqlParameter("@NgayKhoiHanh", d.NgayKhoiHanh),
+                new SqlParameter("@NgayKhoiHanh", d.NgayKhoiHanh == DateTime.MinValue ? (object)DBNull.Value : (object)d.NgayKhoiHanh),
                 new SqlParameter("@TongTien",     d.TongTien),
                 new SqlParameter("@GhiChu",       d.GhiChu)
             });

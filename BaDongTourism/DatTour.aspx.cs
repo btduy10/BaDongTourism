@@ -76,12 +76,17 @@ public partial class DatTourPage : Page
         if (tour == null) { ShowError("Tour không tồn tại."); return; }
 
         int soNL, soTE;
-        soNL = int.TryParse(SoNguoiLon.Text, out soNL) ? soNL : 1;
+        soNL = int.TryParse(SoNguoiLon.Text, out soNL) ? soNL : 0;
         soTE = int.TryParse(SoTreEm.Text,    out soTE) ? soTE : 0;
+
+        if (soNL <= 0 && soTE <= 0)
+        { ShowError("Vui lòng chọn ít nhất 1 người lớn hoặc 1 trẻ em."); return; }
+
         decimal tongTien = soNL * tour.GiaNguoiLon + soTE * tour.GiaTreEm;
 
         DateTime ngayKH;
-        DateTime.TryParse(txtNgayKH.Text, out ngayKH);
+        if (!DateTime.TryParse(txtNgayKH.Text, out ngayKH) || ngayKH < DateTime.Today)
+            ngayKH = DateTime.MinValue; // se xu ly o DAL thanh NULL
 
         var dat = new DatTour
         {
