@@ -46,14 +46,14 @@
                         </div>
 
                         <!-- Hien thi gia tour -->
-                        <div class="row g-3 mb-4 p-3 rounded-3" id="tourInfo" runat="server" style="background:#f0f8ff;display:none;">
-                            <div class="col-6">
-                                <small class="text-muted d-block">Giá người lớn</small>
-                                <strong class="text-warning" id="lblGiaNL" runat="server">0đ</strong>
+                        <div class="d-flex gap-3 mb-4 p-3 rounded-3" id="tourInfo" runat="server" style="background:#f0f8ff;display:none!important;">
+                            <div class="flex-fill text-center p-2 rounded-3 bg-white border">
+                                <small class="text-muted d-block mb-1"><i class="fas fa-user me-1"></i>Người lớn</small>
+                                <div class="fw-bold text-warning fs-5" id="lblGiaNL" runat="server">—</div>
                             </div>
-                            <div class="col-6">
-                                <small class="text-muted d-block">Giá trẻ em</small>
-                                <strong class="text-warning" id="lblGiaTE" runat="server">0đ</strong>
+                            <div class="flex-fill text-center p-2 rounded-3 bg-white border">
+                                <small class="text-muted d-block mb-1"><i class="fas fa-child me-1"></i>Trẻ em</small>
+                                <div class="fw-bold text-warning fs-5" id="lblGiaTE" runat="server">—</div>
                             </div>
                         </div>
 
@@ -73,7 +73,7 @@
                             <div class="col-md-4">
                                 <label class="form-label fw-600">Số Người Lớn</label>
                                 <asp:TextBox ID="SoNguoiLon" runat="server" CssClass="form-control"
-                                             TextMode="Number" Text="1" min="1" />
+                                             TextMode="Number" Text="0" min="0" />
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label fw-600">Số Trẻ Em</label>
@@ -169,21 +169,24 @@ document.addEventListener('DOMContentLoaded', function () {
     var ddlTour = document.getElementById('<%=ddlTour.ClientID%>');
     if (!ddlTour) return;
 
+    function fmtTien(n) {
+        return n.toLocaleString('vi-VN') + 'đ';
+    }
+
     // Load gia khi chon tour
     ddlTour.addEventListener('change', function () {
         var opt = ddlTour.options[ddlTour.selectedIndex];
-        var gnl  = parseFloat(opt.dataset.giaNl  || 0);
-        var gte  = parseFloat(opt.dataset.giaTe  || 0);
+        var gnl  = parseFloat(opt.dataset.giaNl || 0);
+        var gte  = parseFloat(opt.dataset.giaTe || 0);
         var disp = document.getElementById('TongTienDisplay');
         disp.dataset.gianguoilon = gnl;
         disp.dataset.giatreem    = gte;
 
-        // Hien/an info
         var info = document.getElementById('<%=tourInfo.ClientID%>');
-        if (opt.value !== '0') {
+        if (opt.value && opt.value !== '0') {
             info.style.display = 'flex';
-            document.getElementById('<%=lblGiaNL.ClientID%>').innerText = gnl.toLocaleString('vi-VN') + 'đ/người';
-            document.getElementById('<%=lblGiaTE.ClientID%>').innerText = gte.toLocaleString('vi-VN') + 'đ/người';
+            document.getElementById('<%=lblGiaNL.ClientID%>').innerText = fmtTien(gnl) + '/người';
+            document.getElementById('<%=lblGiaTE.ClientID%>').innerText = fmtTien(gte) + '/người';
         } else {
             info.style.display = 'none';
         }
@@ -192,12 +195,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function calcTotal() {
         var disp = document.getElementById('TongTienDisplay');
-        var gnl  = parseFloat(disp.dataset.gianguoilon || 0);
-        var gte  = parseFloat(disp.dataset.giatreem    || 0);
-        var nl   = parseInt(document.getElementById('<%=SoNguoiLon.ClientID%>').value || 1);
-        var te   = parseInt(document.getElementById('<%=SoTreEm.ClientID%>').value || 0);
+        var gnl   = parseFloat(disp.dataset.gianguoilon || 0);
+        var gte   = parseFloat(disp.dataset.giatreem    || 0);
+        var nl    = parseInt(document.getElementById('<%=SoNguoiLon.ClientID%>').value) || 0;
+        var te    = parseInt(document.getElementById('<%=SoTreEm.ClientID%>').value)    || 0;
         var total = nl * gnl + te * gte;
-        disp.innerText = total.toLocaleString('vi-VN') + 'đ';
+        disp.innerText = fmtTien(total);
         document.getElementById('<%=TongTien.ClientID%>').value = total;
     }
 

@@ -17,7 +17,7 @@
 Mở file Web.config, tìm dòng:
 
   <add name="BaDongDB"
-       connectionString="Data Source=localhost;Initial Catalog=BaDongTourism;Integrated Security=True"
+       connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=BaDongTourism;Integrated Security=True"
        ... />
 
 Chỉnh sửa "Data Source" theo cài đặt SQL Server của bạn:
