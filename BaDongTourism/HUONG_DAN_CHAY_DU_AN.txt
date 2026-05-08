@@ -1,0 +1,176 @@
+================================================================
+     HƯỚNG DẪN CÀI ĐẶT & CHẠY DỰ ÁN BA ĐỘNG TOURISM
+     Link GitHub: https://github.com/btduy10/BaDongTourism
+================================================================
+
+YÊU CẦU PHẦN MỀM
+-----------------
+Cài đặt các phần mềm sau trước khi bắt đầu:
+
+  1. Visual Studio 2022 (Community - miễn phí)
+     Link: https://visualstudio.microsoft.com/vs/community/
+     Khi cài chọn workload: "ASP.NET and web development"
+
+  2. SQL Server 2022 (Developer - miễn phí)
+     Link: https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+     Chọn bản: Developer
+
+  3. SQL Server Management Studio - SSMS (miễn phí)
+     Link: https://aka.ms/ssmsfullsetup
+
+  4. Git
+     Link: https://git-scm.com/download/win
+
+================================================================
+BƯỚC 1 — TẢI CODE TỪ GITHUB
+================================================================
+
+  Cách 1: Dùng lệnh Git (khuyến nghị)
+  -------------------------------------
+  Mở Command Prompt hoặc PowerShell, gõ:
+
+      git clone https://github.com/btduy10/BaDongTourism.git
+      cd BaDongTourism
+
+  Cách 2: Tải file ZIP
+  ---------------------
+  - Vào https://github.com/btduy10/BaDongTourism
+  - Bấm nút xanh "Code" → "Download ZIP"
+  - Giải nén ra thư mục bất kỳ (ví dụ: D:\BaDongTourism)
+
+================================================================
+BƯỚC 2 — TẠO DATABASE SQL SERVER
+================================================================
+
+  1. Mở SQL Server Management Studio (SSMS)
+
+  2. Kết nối đến server:
+     - Server name: localhost
+     - Authentication: Windows Authentication
+     - Bấm Connect
+
+  3. Mở file SQL để tạo database:
+     - Bấm File → Open → File...
+     - Chọn file: Database\BaDongTourism.sql
+     - Bấm F5 (hoặc nút Execute) để chạy
+     → Tạo xong database BaDongTourism với đầy đủ bảng
+
+  4. Chạy thêm 2 file SQL sau (làm tương tự bước 3):
+     - Database\ThemBangCaiDat.sql      (tạo bảng cấu hình)
+     - Database\ThemDuLieuTrangChu.sql  (dữ liệu mẫu trang chủ)
+     - Database\ThemCotPhanHoiLienHe.sql (thêm cột phản hồi)
+
+  5. Tạo tài khoản Admin để đăng nhập:
+     Trong SSMS mở New Query, chạy lệnh sau:
+
+     USE BaDongTourism;
+     INSERT INTO TaiKhoan (TenDangNhap, MatKhau, HoTen, VaiTro)
+     VALUES ('admin', '123456', 'Quản Trị Viên', 'Admin');
+
+     (Có thể đổi tên đăng nhập và mật khẩu tùy ý)
+
+================================================================
+BƯỚC 3 — CẤU HÌNH KẾT NỐI DATABASE
+================================================================
+
+  Mở file: BaDongTourism\Web.config
+
+  Tìm dòng connectionString (dòng 5), kiểm tra:
+
+    connectionString="Data Source=localhost;
+                      Initial Catalog=BaDongTourism;
+                      Integrated Security=True"
+
+  Nếu SQL Server của bạn có tên khác (không phải localhost):
+  - Mở SSMS → xem tên server ở ô "Server name" khi kết nối
+  - Thay "localhost" bằng tên server đó
+
+  Ví dụ nếu tên server là DESKTOP-ABC\SQLEXPRESS:
+    Data Source=DESKTOP-ABC\SQLEXPRESS;Initial Catalog=BaDongTourism;Integrated Security=True
+
+================================================================
+BƯỚC 4 — MỞ VÀ CHẠY DỰ ÁN TRONG VISUAL STUDIO
+================================================================
+
+  1. Mở Visual Studio 2022
+
+  2. Bấm "Open a project or solution"
+     Chọn file: BaDongTourism\BaDongTourism.sln
+
+  3. Đợi Visual Studio load xong (lần đầu có thể mất 1-2 phút)
+
+  4. Bấm F5 (hoặc nút tam giác xanh "IIS Express") để chạy
+
+  5. Trình duyệt tự mở tại địa chỉ:
+     http://localhost:XXXX/
+
+================================================================
+BƯỚC 5 — TRUY CẬP WEBSITE
+================================================================
+
+  Trang chủ website:
+     http://localhost:XXXX/
+
+  Trang quản trị admin:
+     http://localhost:XXXX/Admin/Login.aspx
+
+  Đăng nhập admin:
+     Tên đăng nhập : admin
+     Mật khẩu      : 123456
+     (hoặc thông tin bạn đã tạo ở Bước 2)
+
+================================================================
+CÁC TÍNH NĂNG CỦA DỰ ÁN
+================================================================
+
+  WEBSITE NGƯỜI DÙNG:
+  - Trang chủ (slider, thống kê, giới thiệu, tour nổi bật)
+  - Địa điểm du lịch Ba Động
+  - Tour du lịch (danh sách + chi tiết + đặt tour)
+  - Ẩm thực địa phương
+  - Lưu trú (khách sạn, resort)
+  - Tin tức & sự kiện
+  - Thư viện ảnh
+  - Liên hệ
+
+  TRANG QUẢN TRỊ ADMIN:
+  - Quản lý banner/slider trang chủ
+  - Chỉnh nội dung trang chủ (về chúng tôi, thống kê, CTA)
+  - Quản lý địa điểm, tour, tin tức, lưu trú, ẩm thực
+  - Quản lý thư viện ảnh
+  - Xem & phản hồi tin nhắn liên hệ
+  - Quản lý đơn đặt tour
+
+================================================================
+XỬ LÝ LỖI THƯỜNG GẶP
+================================================================
+
+  Lỗi: "Cannot open database BaDongTourism"
+  → Chưa chạy file BaDongTourism.sql hoặc sai tên server
+  → Kiểm tra lại Web.config phần Data Source
+
+  Lỗi: "Login failed for user"
+  → SQL Server chưa bật Windows Authentication
+  → Vào SSMS → chuột phải server → Properties → Security
+    → Chọn "SQL Server and Windows Authentication mode"
+
+  Lỗi: "Could not find file ... .mdf"
+  → Kiểm tra đã chạy đủ 4 file SQL chưa
+
+  Trang trắng hoặc lỗi 500:
+  → Mở Web.config, tìm dòng customErrors, đổi thành:
+    <customErrors mode="Off" />
+  → Chạy lại để xem lỗi chi tiết
+
+================================================================
+THÔNG TIN DỰ ÁN
+================================================================
+
+  Tên dự án  : Ba Động Tourism Website
+  Công nghệ  : ASP.NET Web Forms 4.8 + SQL Server 2022
+  Ngôn ngữ  : C#, HTML, CSS, JavaScript
+  Framework UI: Bootstrap 5
+  Tác giả    : Duy Bui (btduy10@gmail.com)
+  GitHub     : https://github.com/btduy10/BaDongTourism
+
+================================================================
