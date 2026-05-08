@@ -7,16 +7,18 @@ YÊU CẦU PHẦN MỀM
 -----------------
 Cài đặt các phần mềm sau trước khi bắt đầu:
 
-  1. Visual Studio 2022 (Community - miễn phí)
+  1. Visual Studio Community 2022 (miễn phí)
      Link: https://visualstudio.microsoft.com/vs/community/
      Khi cài chọn workload: "ASP.NET and web development"
+     ⚠ Lưu ý: Dự án dùng .NET Framework 4.8, KHÔNG dùng .NET Core
 
   2. SQL Server 2022 (Developer - miễn phí)
      Link: https://www.microsoft.com/en-us/sql-server/sql-server-downloads
      Chọn bản: Developer
 
-  3. SQL Server Management Studio - SSMS (miễn phí)
+  3. SQL Server Management Studio 22 - SSMS (miễn phí)
      Link: https://aka.ms/ssmsfullsetup
+     ⚠ Dùng đúng SSMS 22 để tương thích SQL Server 2022
 
   4. Git
      Link: https://git-scm.com/download/win
@@ -42,7 +44,7 @@ BƯỚC 1 — TẢI CODE TỪ GITHUB
 BƯỚC 2 — TẠO DATABASE SQL SERVER
 ================================================================
 
-  1. Mở SQL Server Management Studio (SSMS)
+  1. Mở SQL Server Management Studio 22 (SSMS 22)
 
   2. Kết nối đến server:
      - Server name: localhost
@@ -92,7 +94,7 @@ BƯỚC 3 — CẤU HÌNH KẾT NỐI DATABASE
 BƯỚC 4 — MỞ VÀ CHẠY DỰ ÁN TRONG VISUAL STUDIO
 ================================================================
 
-  1. Mở Visual Studio 2022
+  1. Mở Visual Studio Community 2022
 
   2. Bấm "Open a project or solution"
      Chọn file: BaDongTourism\BaDongTourism.sln
@@ -151,7 +153,7 @@ XỬ LÝ LỖI THƯỜNG GẶP
 
   Lỗi: "Login failed for user"
   → SQL Server chưa bật Windows Authentication
-  → Vào SSMS → chuột phải server → Properties → Security
+  → Vào SSMS 22 → chuột phải server → Properties → Security
     → Chọn "SQL Server and Windows Authentication mode"
 
   Lỗi: "Could not find file ... .mdf"
