@@ -46,14 +46,16 @@
                         </div>
 
                         <!-- Hien thi gia tour -->
-                        <div class="d-flex gap-3 mb-4 p-3 rounded-3" id="tourInfo" runat="server" style="background:#f0f8ff;display:none!important;">
-                            <div class="flex-fill text-center p-2 rounded-3 bg-white border">
-                                <small class="text-muted d-block mb-1"><i class="fas fa-user me-1"></i>Người lớn</small>
-                                <div class="fw-bold text-warning fs-5" id="lblGiaNL" runat="server">—</div>
-                            </div>
-                            <div class="flex-fill text-center p-2 rounded-3 bg-white border">
-                                <small class="text-muted d-block mb-1"><i class="fas fa-child me-1"></i>Trẻ em</small>
-                                <div class="fw-bold text-warning fs-5" id="lblGiaTE" runat="server">—</div>
+                        <div id="tourInfo" style="display:none; background:#f0f8ff; border-radius:10px; padding:14px; margin-bottom:16px;">
+                            <div style="display:flex; gap:12px;">
+                                <div style="flex:1; text-align:center; background:#fff; border:1px solid #dee2e6; border-radius:8px; padding:10px;">
+                                    <small class="text-muted d-block mb-1"><i class="fas fa-user me-1"></i>Người lớn</small>
+                                    <div id="spnGiaNL" style="font-weight:700; color:#f77f00; font-size:1.1rem;">—</div>
+                                </div>
+                                <div style="flex:1; text-align:center; background:#fff; border:1px solid #dee2e6; border-radius:8px; padding:10px;">
+                                    <small class="text-muted d-block mb-1"><i class="fas fa-child me-1"></i>Trẻ em</small>
+                                    <div id="spnGiaTE" style="font-weight:700; color:#f77f00; font-size:1.1rem;">—</div>
+                                </div>
                             </div>
                         </div>
 
@@ -182,11 +184,11 @@ document.addEventListener('DOMContentLoaded', function () {
         disp.dataset.gianguoilon = gnl;
         disp.dataset.giatreem    = gte;
 
-        var info = document.getElementById('<%=tourInfo.ClientID%>');
+        var info = document.getElementById('tourInfo');
         if (opt.value && opt.value !== '0') {
-            info.style.display = 'flex';
-            document.getElementById('<%=lblGiaNL.ClientID%>').innerText = fmtTien(gnl) + '/người';
-            document.getElementById('<%=lblGiaTE.ClientID%>').innerText = fmtTien(gte) + '/người';
+            info.style.display = 'block';
+            document.getElementById('spnGiaNL').innerText = fmtTien(gnl) + '/người';
+            document.getElementById('spnGiaTE').innerText = fmtTien(gte) + '/người';
         } else {
             info.style.display = 'none';
         }
