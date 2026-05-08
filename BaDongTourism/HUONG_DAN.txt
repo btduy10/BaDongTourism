@@ -1,0 +1,155 @@
+=====================================================
+  DỰ ÁN: WEB DU LỊCH BA ĐỘNG - HƯỚNG DẪN CÀI ĐẶT
+  ASP.NET Web Forms | ADO.NET | SQL Server 2022
+  Visual Studio 2022
+=====================================================
+
+----- BƯỚC 1: TẠO DATABASE -----
+
+1. Mở SQL Server Management Studio (SSMS)
+2. Kết nối đến SQL Server của bạn
+3. Mở file: Database\BaDongTourism.sql
+4. Nhấn F5 để chạy toàn bộ script
+   → Script sẽ tự tạo database "BaDongTourism" cùng tất cả bảng và dữ liệu mẫu
+
+----- BƯỚC 2: CẤU HÌNH CONNECTION STRING -----
+
+Mở file Web.config, tìm dòng:
+
+  <add name="BaDongDB"
+       connectionString="Data Source=localhost;Initial Catalog=BaDongTourism;Integrated Security=True"
+       ... />
+
+Chỉnh sửa "Data Source" theo cài đặt SQL Server của bạn:
+  - SQL Server Express local  : Data Source=.\SQLEXPRESS
+  - SQL Server Developer local: Data Source=(local)  hoặc  Data Source=.
+  - SQL Server có tên         : Data Source=TEN_MAY\SQLEXPRESS
+  - SQL Server Authentication : thêm  User ID=sa;Password=matkhau;
+
+----- BƯỚC 3: MỞ PROJECT TRONG VISUAL STUDIO 2022 -----
+
+1. Mở Visual Studio 2022
+2. File → Open → Project/Solution
+3. Chọn file: BaDongTourism.sln
+4. Chờ VS load project
+
+----- BƯỚC 4: BUILD & CHẠY -----
+
+1. Nhấn Ctrl+Shift+B để Build
+2. Nhấn F5 (hoặc Ctrl+F5) để chạy
+3. Trình duyệt sẽ mở tự động tại: http://localhost:PORT/
+
+----- ĐĂNG NHẬP ADMIN -----
+
+URL    : http://localhost:PORT/Admin/Login.aspx
+User   : admin
+Pass   : admin123
+
+→ Sau khi đăng nhập: Dashboard → quản lý toàn bộ nội dung
+
+----- CẤU TRÚC PROJECT -----
+
+BaDongTourism/
+│
+├── Database/
+│   └── BaDongTourism.sql          ← Script tạo DB + dữ liệu mẫu
+│
+├── App_Code/
+│   ├── DBHelper.cs                ← ADO.NET helper (kết nối DB)
+│   ├── Models/                    ← Các class model (POCO)
+│   │   ├── DiaDiem.cs
+│   │   ├── Tour.cs
+│   │   ├── TinTuc.cs
+│   │   ├── LuuTru.cs
+│   │   ├── AmThuc.cs
+│   │   ├── DatTour.cs
+│   │   ├── LienHe.cs
+│   │   └── Gallery.cs
+│   └── DAL/                       ← Data Access Layer (ADO.NET)
+│       ├── DiaDiemDAL.cs
+│       ├── TourDAL.cs
+│       ├── TinTucDAL.cs
+│       ├── LuuTruDAL.cs
+│       ├── AmThucDAL.cs
+│       ├── GalleryDAL.cs
+│       ├── DatTourDAL.cs
+│       ├── LienHeDAL.cs
+│       └── TaiKhoanDAL.cs
+│
+├── Content/
+│   ├── css/
+│   │   └── style.css              ← CSS tùy chỉnh
+│   └── images/
+│       └── uploads/               ← Ảnh upload (tạo thư mục này)
+│
+├── Scripts/
+│   └── main.js                    ← JavaScript chính
+│
+├── Admin/                         ← Khu vực quản trị (yêu cầu đăng nhập)
+│   ├── Web.config                 ← Bảo vệ thư mục Admin
+│   ├── Admin.Master               ← Layout admin
+│   ├── Login.aspx                 ← Trang đăng nhập
+│   ├── Dashboard.aspx             ← Tổng quan thống kê
+│   ├── QuanLyDiaDiem.aspx         ← CRUD địa điểm
+│   ├── QuanLyTour.aspx            ← CRUD tour
+│   ├── QuanLyTinTuc.aspx          ← CRUD tin tức
+│   ├── QuanLyLuuTru.aspx          ← CRUD lưu trú
+│   ├── QuanLyAmThuc.aspx          ← CRUD ẩm thực
+│   ├── QuanLyGallery.aspx         ← Upload & quản lý ảnh
+│   ├── QuanLyDatTour.aspx         ← Xem & duyệt đơn đặt tour
+│   └── QuanLyLienHe.aspx          ← Xem tin nhắn liên hệ
+│
+├── Default.aspx                   ← Trang chủ
+├── GioiThieu.aspx                 ← Giới thiệu Ba Động
+├── DiaDiem.aspx                   ← Danh sách địa điểm
+├── DiaDiemChiTiet.aspx            ← Chi tiết địa điểm
+├── Tour.aspx                      ← Danh sách tour
+├── TourChiTiet.aspx               ← Chi tiết + đặt tour
+├── LuuTru.aspx                    ← Lưu trú
+├── AmThuc.aspx                    ← Ẩm thực
+├── TinTuc.aspx                    ← Danh sách tin tức
+├── TinTucChiTiet.aspx             ← Chi tiết bài viết
+├── Gallery.aspx                   ← Thư viện ảnh
+├── LienHe.aspx                    ← Liên hệ
+├── DatTour.aspx                   ← Đặt tour (trang riêng)
+├── NotFound.aspx                  ← Trang 404
+├── Site.Master                    ← Layout chung (header + footer)
+├── Web.config                     ← Cấu hình ứng dụng
+├── Global.asax                    ← Application events
+├── BaDongTourism.csproj           ← Project file
+└── BaDongTourism.sln              ← Solution file
+
+----- LƯU Ý QUAN TRỌNG -----
+
+1. Tạo thư mục Content/images/uploads/ (để upload ảnh hoạt động)
+2. Đảm bảo IIS Express hoặc IIS có quyền ghi vào thư mục uploads/
+3. Nếu dùng SQL Server Authentication, đổi Integrated Security=False
+   và thêm User ID=...; Password=...;
+4. Đổi mật khẩu admin sau khi deploy lên production
+
+----- TÍNH NĂNG ĐÃ HOÀN THIỆN -----
+
+✅ Trang chủ với hero slider, thống kê, địa điểm/tour/tin nổi bật
+✅ Giới thiệu Ba Động (lịch sử, văn hóa, hướng dẫn đi lại)
+✅ Địa điểm tham quan (danh sách + chi tiết)
+✅ Tour du lịch (danh sách + chi tiết + đặt tour inline)
+✅ Đặt tour trang riêng (chọn tour, tính tiền tự động)
+✅ Lưu trú (khách sạn, resort, nhà nghỉ)
+✅ Ẩm thực (đặc sản, nhà hàng)
+✅ Tin tức & sự kiện (danh sách + chi tiết)
+✅ Thư viện ảnh (gallery lightbox)
+✅ Liên hệ (form gửi tin nhắn + bản đồ)
+✅ Admin Panel đầy đủ CRUD
+✅ Upload ảnh (Gallery)
+✅ Quản lý đặt tour (xác nhận / hủy)
+✅ Đọc tin nhắn liên hệ
+✅ Bảo vệ thư mục Admin bằng Forms Authentication
+✅ Responsive (Bootstrap 5)
+✅ Animation AOS, Swiper slider
+✅ Counter animation, lightbox gallery
+✅ Tính tiền tour tự động (JavaScript)
+
+=====================================================
+  Chúc bạn thành công! 🏖️
+  Mọi thắc mắc liên hệ: btduy10@gmail.com
+=====================================================

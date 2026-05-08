@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != '' And Exists('$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' == '' And Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BaDongTourism</RootNamespace>
+    <AssemblyName>BaDongTourism</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- App_Code -->
+    <Compile Include="App_Code\DBHelper.cs" />
+    <Compile Include="App_Code\Models\Banner.cs" />
+    <Compile Include="App_Code\Models\DiaDiem.cs" />
+    <Compile Include="App_Code\Models\Tour.cs" />
+    <Compile Include="App_Code\Models\TinTuc.cs" />
+    <Compile Include="App_Code\Models\LuuTru.cs" />
+    <Compile Include="App_Code\Models\AmThuc.cs" />
+    <Compile Include="App_Code\Models\DatTour.cs" />
+    <Compile Include="App_Code\Models\LienHe.cs" />
+    <Compile Include="App_Code\Models\Gallery.cs" />
+    <Compile Include="App_Code\DAL\DiaDiemDAL.cs" />
+    <Compile Include="App_Code\DAL\TourDAL.cs" />
+    <Compile Include="App_Code\DAL\TinTucDAL.cs" />
+    <Compile Include="App_Code\DAL\LuuTruDAL.cs" />
+    <Compile Include="App_Code\DAL\AmThucDAL.cs" />
+    <Compile Include="App_Code\DAL\BannerDAL.cs" />
+    <Compile Include="App_Code\DAL\CaiDatDAL.cs" />
+    <Compile Include="App_Code\DAL\GalleryDAL.cs" />
+    <Compile Include="App_Code\DAL\DatTourDAL.cs" />
+    <Compile Include="App_Code\DAL\LienHeDAL.cs" />
+    <Compile Include="App_Code\DAL\TaiKhoanDAL.cs" />
+    <!-- Master Pages -->
+    <Content Include="Site.Master" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="Admin\Admin.Master" />
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <!-- Frontend Pages -->
+    <Content Include="Default.aspx" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Content Include="GioiThieu.aspx" />
+    <Compile Include="GioiThieu.aspx.cs">
+      <DependentUpon>GioiThieu.aspx</DependentUpon>
+    </Compile>
+    <Content Include="DiaDiem.aspx" />
+    <Compile Include="DiaDiem.aspx.cs">
+      <DependentUpon>DiaDiem.aspx</DependentUpon>
+    </Compile>
+    <Content Include="DiaDiemChiTiet.aspx" />
+    <Compile Include="DiaDiemChiTiet.aspx.cs">
+      <DependentUpon>DiaDiemChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Tour.aspx" />
+    <Compile Include="Tour.aspx.cs">
+      <DependentUpon>Tour.aspx</DependentUpon>
+    </Compile>
+    <Content Include="TourChiTiet.aspx" />
+    <Compile Include="TourChiTiet.aspx.cs">
+      <DependentUpon>TourChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Content Include="LuuTru.aspx" />
+    <Compile Include="LuuTru.aspx.cs">
+      <DependentUpon>LuuTru.aspx</DependentUpon>
+    </Compile>
+    <Content Include="AmThuc.aspx" />
+    <Compile Include="AmThuc.aspx.cs">
+      <DependentUpon>AmThuc.aspx</DependentUpon>
+    </Compile>
+    <Content Include="TinTuc.aspx" />
+    <Compile Include="TinTuc.aspx.cs">
+      <DependentUpon>TinTuc.aspx</DependentUpon>
+    </Compile>
+    <Content Include="TinTucChiTiet.aspx" />
+    <Compile Include="TinTucChiTiet.aspx.cs">
+      <DependentUpon>TinTucChiTiet.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Gallery.aspx" />
+    <Compile Include="Gallery.aspx.cs">
+      <DependentUpon>Gallery.aspx</DependentUpon>
+    </Compile>
+    <Content Include="LienHe.aspx" />
+    <Compile Include="LienHe.aspx.cs">
+      <DependentUpon>LienHe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="DatTour.aspx" />
+    <Compile Include="DatTour.aspx.cs">
+      <DependentUpon>DatTour.aspx</DependentUpon>
+    </Compile>
+    <!-- Admin Pages -->
+    <Content Include="Admin\Login.aspx" />
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\Dashboard.aspx" />
+    <Compile Include="Admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyDiaDiem.aspx" />
+    <Compile Include="Admin\QuanLyDiaDiem.aspx.cs">
+      <DependentUpon>QuanLyDiaDiem.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyTour.aspx" />
+    <Compile Include="Admin\QuanLyTour.aspx.cs">
+      <DependentUpon>QuanLyTour.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyTinTuc.aspx" />
+    <Compile Include="Admin\QuanLyTinTuc.aspx.cs">
+      <DependentUpon>QuanLyTinTuc.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyLuuTru.aspx" />
+    <Compile Include="Admin\QuanLyLuuTru.aspx.cs">
+      <DependentUpon>QuanLyLuuTru.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyAmThuc.aspx" />
+    <Compile Include="Admin\QuanLyAmThuc.aspx.cs">
+      <DependentUpon>QuanLyAmThuc.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyBanner.aspx" />
+    <Compile Include="Admin\QuanLyBanner.aspx.cs">
+      <DependentUpon>QuanLyBanner.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyGioiThieu.aspx" />
+    <Compile Include="Admin\QuanLyGioiThieu.aspx.cs">
+      <DependentUpon>QuanLyGioiThieu.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyTrangChu.aspx" />
+    <Compile Include="Admin\QuanLyTrangChu.aspx.cs">
+      <DependentUpon>QuanLyTrangChu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\QuanLyBanner.aspx.cs">
+      <DependentUpon>QuanLyBanner.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyGallery.aspx" />
+    <Compile Include="Admin\QuanLyGallery.aspx.cs">
+      <DependentUpon>QuanLyGallery.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyDatTour.aspx" />
+    <Compile Include="Admin\QuanLyDatTour.aspx.cs">
+      <DependentUpon>QuanLyDatTour.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin\QuanLyLienHe.aspx" />
+    <Compile Include="Admin\QuanLyLienHe.aspx.cs">
+      <DependentUpon>QuanLyLienHe.aspx</DependentUpon>
+    </Compile>
+    <!-- Config & static -->
+    <Content Include="Web.config" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Scripts\main.js" />
+    <None Include="Database\BaDongTourism.sql" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != '' And Exists('$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' == '' And Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61286/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

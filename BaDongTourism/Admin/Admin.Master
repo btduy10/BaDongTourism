@@ -1,0 +1,98 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.Master.cs" Inherits="Admin_AdminMaster" %>
+<!DOCTYPE html>
+<html lang="vi">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Admin Ba Động</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="<%=ResolveUrl("~/Content/css/style.css")%>" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body style="font-family:'Nunito',sans-serif;background:#f4f6fa;">
+<form id="frmAdmin" runat="server">
+
+<!-- SIDEBAR -->
+<div class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-brand">
+        <i class="fas fa-umbrella-beach me-2" style="color:#00b4d8;"></i>Ba Động Admin
+    </div>
+    <nav class="mt-2">
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/Dashboard.aspx")%>">
+            <i class="fas fa-tachometer-alt"></i> Tổng Quan
+        </a>
+        <div style="padding:8px 20px;font-size:0.72rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:2px;margin-top:8px;">Trang Chủ</div>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyBanner.aspx")%>">
+            <i class="fas fa-photo-film"></i> Banner / Slider
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyTrangChu.aspx")%>">
+            <i class="fas fa-home"></i> Nội Dung Trang Chủ
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyGioiThieu.aspx")%>">
+            <i class="fas fa-file-alt"></i> Trang Giới Thiệu
+        </a>
+        <div style="padding:8px 20px;font-size:0.72rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:2px;margin-top:8px;">Nội Dung</div>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyDiaDiem.aspx")%>">
+            <i class="fas fa-map-pin"></i> Địa Điểm
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyTour.aspx")%>">
+            <i class="fas fa-map"></i> Tour Du Lịch
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyTinTuc.aspx")%>">
+            <i class="fas fa-newspaper"></i> Tin Tức
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyLuuTru.aspx")%>">
+            <i class="fas fa-hotel"></i> Lưu Trú
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyAmThuc.aspx")%>">
+            <i class="fas fa-utensils"></i> Ẩm Thực
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyGallery.aspx")%>">
+            <i class="fas fa-images"></i> Thư Viện Ảnh
+        </a>
+        <div style="padding:8px 20px;font-size:0.72rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:2px;margin-top:8px;">Đơn & Liên Hệ</div>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyDatTour.aspx")%>">
+            <i class="fas fa-calendar-check"></i> Đặt Tour
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/QuanLyLienHe.aspx")%>">
+            <i class="fas fa-envelope"></i> Tin Nhắn
+            <asp:Literal ID="litTinNhanBadge" runat="server" />
+        </a>
+        <div style="padding:8px 20px;font-size:0.72rem;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:2px;margin-top:8px;">Hệ Thống</div>
+        <a class="nav-link" href="<%=ResolveUrl("~/Default.aspx")%>" target="_blank">
+            <i class="fas fa-globe"></i> Xem Website
+        </a>
+        <a class="nav-link" href="<%=ResolveUrl("~/Admin/Login.aspx?action=logout")%>">
+            <i class="fas fa-sign-out-alt"></i> Đăng Xuất
+        </a>
+    </nav>
+</div>
+
+<!-- MAIN -->
+<div class="admin-main">
+    <div class="admin-topbar">
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-sm btn-light" onclick="document.getElementById('adminSidebar').classList.toggle('sidebar-open')">
+                <i class="fas fa-bars"></i>
+            </button>
+            <span class="fw-700" style="font-weight:700;" id="pageTitle" runat="server">Dashboard</span>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <span class="text-muted small"><i class="fas fa-user-circle me-1"></i>
+                <asp:Literal ID="litAdmin" runat="server" Text="Admin" />
+            </span>
+        </div>
+    </div>
+
+    <div class="admin-content">
+        <asp:ContentPlaceHolder ID="AdminContent" runat="server" />
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+
+# Build output
+bin/
+obj/
+
+# ASP.NET
+*.bak
+App_Data/*.mdf
+App_Data/*.ldf
+
+# Packages
+packages/
+
+# Uploads (khong commit anh upload cua user)
+Content/images/uploads/
+
+# Local config (khong commit password DB)
+Web.config.user
