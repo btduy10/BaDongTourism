@@ -62,14 +62,14 @@
                 <div class="col-lg-4">
                     <div class="booking-card sticky-top" style="top:90px;">
                         <h5 class="fw-bold mb-4" style="color:#0077b6;"><i class="fas fa-calendar-check me-2"></i>Đặt Tour</h5>
-                        <div class="d-flex justify-content-between mb-3 p-3 rounded-3" style="background:#f0f8ff;">
-                            <div>
-                                <div style="font-size:0.8rem;color:#666;">Người lớn</div>
-                                <div style="font-size:1.3rem;font-weight:800;color:#f77f00;" id="lblGiaNL" runat="server"></div>
+                        <div style="display:flex;gap:10px;margin-bottom:16px;padding:14px;background:#f0f8ff;border-radius:10px;">
+                            <div style="flex:1;text-align:center;background:#fff;border:1px solid #dee2e6;border-radius:8px;padding:10px;">
+                                <div style="font-size:0.78rem;color:#666;margin-bottom:4px;">Người lớn</div>
+                                <div id="spnGiaNL" style="font-size:1.15rem;font-weight:800;color:#f77f00;font-family:'Inter',sans-serif;">—</div>
                             </div>
-                            <div class="text-end">
-                                <div style="font-size:0.8rem;color:#666;">Trẻ em</div>
-                                <div style="font-size:1.3rem;font-weight:800;color:#f77f00;" id="lblGiaTE" runat="server"></div>
+                            <div style="flex:1;text-align:center;background:#fff;border:1px solid #dee2e6;border-radius:8px;padding:10px;">
+                                <div style="font-size:0.78rem;color:#666;margin-bottom:4px;">Trẻ em</div>
+                                <div id="spnGiaTE" style="font-size:1.15rem;font-weight:800;color:#f77f00;font-family:'Inter',sans-serif;">—</div>
                             </div>
                         </div>
 

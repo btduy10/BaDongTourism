@@ -41,16 +41,17 @@ public partial class TourChiTiet : Page
         lblBaoGom.InnerHtml      = baoGom;
         lblKhongBaoGom.InnerHtml = khongBaoGom;
         lblLuuY.InnerHtml        = luuY;
-        lblGiaNL.InnerText       = t.GiaNguoiLon.ToString("N0") + "đ/người";
-        lblGiaTE.InnerText       = t.GiaTreEm.ToString("N0") + "đ/người";
-
         imgTour.Src = string.IsNullOrEmpty(t.HinhAnhDai)
             ? ResolveUrl("~/Content/images/no-image.jpg")
             : ResolveUrl("~/Content/images/uploads/" + t.HinhAnhDai);
         imgTour.Alt = t.TenTour;
 
         TongTien.Value = "0";
+        string giaNL = t.GiaNguoiLon.ToString("N0") + "đ/người";
+        string giaTE = t.GiaTreEm.ToString("N0") + "đ/người";
         ScriptManager.RegisterStartupScript(this, GetType(), "priceData",
+            "document.getElementById('spnGiaNL').innerText='" + giaNL + "';" +
+            "document.getElementById('spnGiaTE').innerText='" + giaTE + "';" +
             "document.getElementById('TongTienDisplay').dataset.gianguoilon='" + t.GiaNguoiLon + "';" +
             "document.getElementById('TongTienDisplay').dataset.giatreem='" + t.GiaTreEm + "';", true);
     }
