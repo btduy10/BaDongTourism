@@ -137,7 +137,7 @@
             <div class="section-divider"></div>
             <p class="section-desc">Những chuyến đi được yêu thích nhất tại Ba Động</p>
         </div>
-        <div class="row g-4" id="tourList" runat="server">
+        <div class="row g-4 justify-content-center" id="tourList" runat="server">
             <!-- Render by code-behind -->
         </div>
         <div class="text-center mt-5" data-aos="fade-up">
