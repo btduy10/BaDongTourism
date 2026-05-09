@@ -112,9 +112,9 @@ public partial class _Default : Page
                 "  <div class='card-body'>" +
                 "    <h5 class='card-title'>" + d.TenDiaDiem + "</h5>" +
                 "    <p class='card-text'>" + TruncateText(d.MoTaNgan, 100) + "</p>" +
-                "    <div class='d-flex justify-content-between align-items-center mt-3'>" +
-                "      <small class='text-muted'><i class='fas fa-map-marker-alt me-1'></i>" + TruncateText(d.DiaChi, 40) + "</small>" +
-                "      <a href='DiaDiemChiTiet.aspx?id=" + d.MaDiaDiem + "' class='btn btn-sm btn-outline-primary'>Chi tiết</a>" +
+                "    <div class='d-flex align-items-center gap-2 mt-3' style='min-width:0;'>" +
+                "      <small class='text-muted text-truncate flex-grow-1' style='min-width:0;'><i class='fas fa-map-marker-alt me-1'></i>" + d.DiaChi + "</small>" +
+                "      <a href='DiaDiemChiTiet.aspx?id=" + d.MaDiaDiem + "' class='btn btn-sm btn-outline-primary flex-shrink-0'>Chi tiết</a>" +
                 "    </div>" +
                 "  </div>" +
                 "</div>";
