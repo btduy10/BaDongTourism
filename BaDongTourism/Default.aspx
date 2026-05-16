@@ -72,9 +72,9 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="section-subtitle"><%=C("tc_subtitle","Về Chúng Tôi")%></div>
-                <h2 class="section-title"><%=H("tc_tieude","Viên Ngọc Xanh<br/>Của Trà Vinh")%></h2>
+                <h2 class="section-title"><%=H("tc_tieude","Viên Ngọc Xanh<br/>Của Vĩnh Long")%></h2>
                 <div class="section-divider" style="margin:0 0 20px;"></div>
-                <p class="mb-4"><%=C("tc_doan_1","Bãi biển Ba Động thuộc xã Trường Long Hòa, huyện Duyên Hải, tỉnh Trà Vinh – nằm cách TP. Trà Vinh khoảng 50km về phía Nam. Đây là một trong những bãi biển hoang sơ, đẹp và ít bị tác động nhất ở miền Tây Nam Bộ.")%></p>
+                <p class="mb-4"><%=C("tc_doan_1","Bãi biển Ba Động thuộc phường Trường Long Hòa, tỉnh Vĩnh Long – nằm cách trung tâm thành phố khoảng 55km. Đây là một trong những bãi biển hoang sơ, đẹp và ít bị tác động nhất ở miền Tây Nam Bộ.")%></p>
                 <p class="mb-4"><%=C("tc_doan_2","Với bờ biển dài hơn 10km, cát trắng mịn, sóng êm và không khí trong lành, Ba Động đang dần trở thành điểm đến hấp dẫn cho những du khách muốn tìm về thiên nhiên nguyên sơ.")%></p>
                 <div class="row g-3 mb-4">
                     <div class="col-6">

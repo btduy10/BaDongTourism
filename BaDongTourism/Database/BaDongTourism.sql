@@ -242,10 +242,10 @@ INSERT INTO Banner (TieuDe, MoTa, HinhAnh, ThuTu) VALUES
 
 -- Dia diem mau
 INSERT INTO DiaDiem (MaDanhMuc, TenDiaDiem, MoTaNgan, DiaChi, NoiBat) VALUES
-(1, N'Bãi Biển Ba Động', N'Bãi biển nguyên sơ dài hơn 10km với cát trắng mịn và sóng biển êm đềm.', N'Xã Trường Long Hòa, huyện Duyên Hải, Trà Vinh', 1),
-(2, N'Chùa Hang', N'Ngôi chùa cổ kính được xây dựng trong hang đá tự nhiên, là điểm tâm linh nổi tiếng.', N'Huyện Duyên Hải, Trà Vinh', 1),
-(3, N'Làng nghề đan lát', N'Làng nghề truyền thống với những sản phẩm thủ công tinh xảo từ lá buông.', N'Huyện Duyên Hải, Trà Vinh', 0),
-(1, N'Rừng phòng hộ ven biển', N'Khu rừng ngập mặn xanh mát, lý tưởng cho các tour sinh thái.', N'Xã Trường Long Hòa, Trà Vinh', 1);
+(1, N'Bãi Biển Ba Động', N'Bãi biển nguyên sơ dài hơn 10km với cát trắng mịn và sóng biển êm đềm.', N'Phường Trường Long Hòa, tỉnh Vĩnh Long', 1),
+(2, N'Chùa Hang', N'Ngôi chùa cổ kính được xây dựng trong hang đá tự nhiên, là điểm tâm linh nổi tiếng.', N'Phường Trường Long Hòa, tỉnh Vĩnh Long', 1),
+(3, N'Làng nghề đan lát', N'Làng nghề truyền thống với những sản phẩm thủ công tinh xảo từ lá buông.', N'Phường Trường Long Hòa, tỉnh Vĩnh Long', 0),
+(1, N'Rừng phòng hộ ven biển', N'Khu rừng ngập mặn xanh mát, lý tưởng cho các tour sinh thái.', N'Phường Trường Long Hòa, tỉnh Vĩnh Long', 1);
 
 -- Tour mau
 INSERT INTO Tour (TenTour, MoTaNgan, ThoiGian, DiaDiem, GiaNguoiLon, GiaTreEm, NoiBat) VALUES
